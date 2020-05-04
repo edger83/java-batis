@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XX>
+    132
+    <if test="name == 1">
+        ddd
+        ff
+    </if>
+    ddd
+
+</XX>

@@ -1,0 +1,37 @@
+<mapper namespace="com.lagou.dao.ITestDao">
+
+    <!--sql的唯一标识：namespace.id来组成 ： statementId-->
+    <select id="selectNames" resultType="java.lang.String" >
+        select testName from test
+    </select>
+    <!-- 参数限制必须是这个类型 -->
+    <select id="selectNameByTestId" resultType="java.lang.String" paramterType="com.lagou.pojo.TestBean">
+        select testName from test where testId = #{testId}
+    </select>
+    <!-- 不做参数限制 -->
+    <select id="selectNameById" resultType="java.lang.String">
+        select testName from test where testId = #{testId}
+    </select>
+    <select id="selectNameByIdAndName" resultType="java.lang.String">
+        select testName from test where testId = #{testId} and testName = #{testName}
+    </select>
+
+    <select id="selectNameByIdAndName2" resultType="com.lagou.pojo.TestBean">
+        select * from test where 1 = 1
+        <if test="testName != null">
+            and testName = #{testName}
+        </if>
+         and testId = #{testId}
+    </select>
+
+    <update id="update" paramterType="com.lagou.pojo.TestBean">
+        update test set testName = #{testName} where testId = #{testId}
+    </update>
+    <insert id="insert">
+        insert into test (testId, testName) values (#{testId}, #{testName})
+    </insert>
+    <delete id="delete">
+            delete from test where testId = #{testId}
+    </delete>
+
+</mapper>
